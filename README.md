@@ -1,2 +1,2 @@
-# pigoogler_web
+# PiGoogler Web
 Web server for PiGoogler
