@@ -1,2 +1,2 @@
-# PiGoogler Web
-Web server for PiGoogler
+# AIY Image Searcher Web
+Web server for AIY Image Searcher
