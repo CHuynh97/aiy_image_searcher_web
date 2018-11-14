@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>AIY Image Searcher</title>
+</head>
+
+<body>
+    <h1>AIY Image Searcher</h1>
+    <h3>The following is the view of the PiCamera of the AIY Vision Kit. Click the button below to get a Google Search of the
+        object detected!</h3>
+    <div>
+        <script address={{address}}>
+            var address = document.currentScript.getAttribute("address");
+            var ws = new WebSocket(address);
+            ws.onopen = function (event) {
+                var out_msg = {
+                    "newClient": "browser"
+                };
+                ws.send(JSON.stringify(out_msg));
+            }
+            ws.onmessage = function (event) {
+                console.log("Received Message!");
+                var msg = JSON.parse(event.data);
+                if (msg.id == "device") {
+                    var img_data = msg.img;
+                    console.log(typeof img_data);
+                    // img_decoded = atob(img_data);
+                    document.getElementById("aiy_img").src = "data:image/jpeg;base64," + img_data
+
+                }
+            }
+        </script>
+        <img id=aiy_img src="" height=180 width=320>
+    </div>
+    <button>What is this?</button>
+</body>
+
+</html>
